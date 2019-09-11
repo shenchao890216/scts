@@ -1,0 +1,2 @@
+# scts
+sc learning typescript
