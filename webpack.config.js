@@ -1,6 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+// const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const webpack = require('webpack')
 
 module.exports = {
@@ -27,7 +27,7 @@ module.exports = {
     port: 9000
   },
   plugins: [
-    new CleanWebpackPlugin(),
+    // new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: 'Typescript Learning'
     }),
