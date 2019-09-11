@@ -1,2 +1,4 @@
-# scts
-sc learning typescript
+# Typescript Learning Demo
+
+自己Typescript学习Demo
+
