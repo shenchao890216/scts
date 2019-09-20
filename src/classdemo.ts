@@ -20,3 +20,17 @@ export class Snake extends Animal {
     super.move(distanceInMeters)
   }
 }
+
+class Person {
+  constructor (protected name: string) {}
+}
+
+export class Employee extends Person {
+  constructor (name: string, private department: string) {
+    super(name)
+  }
+
+  public getElevatorPitch() {
+    return `Hello, my name is ${this.name} and I work in ${this.department}.`
+  }
+}

@@ -1,91 +1,17 @@
-import { inflate } from "zlib"
+let suits = ["hearts", "spades", "clubs", "diamonds"]
 
-interface Person {
-  name: string
-  age: number
+function pickCard(x: {suit: string; card: number; }[]): number;
+function pickCard(x: number): {suit: string; card: number; };
+function pickCard(x: any): any {
+    // Check to see if we're working with an object/array
+    // if so, they gave us the deck and we'll pick the card
+    if (typeof x == "object") {
+        let pickedCard = Math.floor(Math.random() * x.length);
+        return pickedCard;
+    }
+    // Otherwise just let them pick the card
+    else if (typeof x == "number") {
+        let pickedSuit = Math.floor(x / 13);
+        return { suit: suits[pickedSuit], card: x % 13 };
+    }
 }
-
-let p1: Person = {
-  name: 'w3ctalk',
-  age: 18
-}
-
-// let p2: Person = {
-//   name: 'w3c'
-// }
-
-// let p3: Person = {
-//   name: 'w3c-talk',
-//   age: 19,
-//   weight: 90
-// }
-
-// function sum ({x, y}: {x: number, y: number}): number {
-//   console.log(x + y)
-//   return x + y
-// }
-
-// interface IsSum {
-//   x: number
-//   y: number
-// }
-
-// function sum ({x, y}: IsSum): number {
-//   console.log(x + y)
-//   return x + y
-// }
-
-// sum({x: 1, y: 2})
-
-function sayHello (person: {name: string, age: number}) {
-  console.log('hello', person.name, ', age-', person.age)
-}
-
-sayHello({
-  name: 'w3ctalk',
-  age: 18
-})
-
-sayHello(p1)
-
-interface SquareConfig {
-  color?: string
-  width?: number
-}
-
-function createSquare (config: SquareConfig): {
-  color: string
-  area: number
-} {
-  let defaultSquare = {
-    color: 'white',
-    area: 100
-  }
-
-  if (config.color) {
-    defaultSquare.color = config.color
-  }
-
-  if (config.width) {
-    defaultSquare.area = config.width * config.width
-  }
-
-  return defaultSquare
-}
-
-interface Shape {
-  color: string
-}
-
-interface PenStroke {
-  penWidth: number
-}
-
-interface Square extends Shape, PenStroke {
-  sideLength: number
-}
-
-let square = <Square>{}
-square.color = "blue"
-square.sideLength = 10
-square.penWidth = 5.0
